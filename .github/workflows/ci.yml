@@ -81,3 +81,8 @@ jobs:
 
           docker push "$DOCKERHUB:$SHA"
           docker push "$DOCKERHUB:latest"
+
+      - name: Disparar despliegue en Render
+        run: |
+          curl -fsS -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
+
